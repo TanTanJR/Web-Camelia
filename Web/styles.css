@@ -1,0 +1,135 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    background: f5f5f5;
+    color: #333;
+}
+
+header{
+    background-color: 7a7a7a;
+    color: white;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.subtitle{
+    font-size: 18px;
+    opacity: 0.9;
+}
+
+main {
+    width: 90%;
+    max-width: 900px;
+    margin: 40px auto;
+}
+
+.intro {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+}
+
+.categorias ul{
+    list-style: none;
+    padding: 0;
+}
+
+.categorias li{
+    padding: 8px 0;
+    font-size: 18px;
+    border-bottom: 1px solid #e2e2e2;
+}
+
+.catergorias li:last-child{
+    border-bottom: none;
+}
+
+.tarjeta-libro {
+    margin-top: 40px;
+}
+
+.libro-contenedor{
+    background: #8d8d8d;
+    padding: 20px;
+    border-radius: 25px;
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    color: white;
+}
+
+.libro-imagen img {
+    width: 150px;
+    border-radius: 15px;
+    height: 200px;
+    object-fit: cover;
+}
+
+/* Etiqueta categoría*/
+.categorias{
+    display: inline-block;
+    background: #e5e5e5;
+    color: #333;
+    padding: 8px 12px;
+    border-radius: 20px;
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+/* información del libro*/
+.libro-info{
+    background: #d9d9d9;
+    padding: 15px;
+    border-radius: 20px;
+    flex: 1;
+    color: #333;
+}
+
+.titulo-autor{
+    display: flex;
+    justify-content: space-between;
+}
+
+.titulo-autor h2{
+    margin: 0;
+}
+
+.autor{
+    font-weight: bold;
+    margin: 0;
+
+ }
+
+ /* descripción*/
+.descripcion{
+    margin-top: 10px;
+    line-height: 1.4;
+}
+
+/*Valoración*/
+.valoracion{
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.estrellas{
+    color: #f5c518;
+    font-size: 20px;
+}
+
+@media (max-width: 600px){
+    .libro-contenedor{
+        flex-direction: column;
+        align-items: center;
+        
+    }
+
+    .libro-info{
+        width: 100%;
+    }
+  
+}
