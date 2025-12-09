@@ -65,7 +65,11 @@
                 <div class="valoracion">
                     <span>Valoración</span>
 
-                    <div class="estrellas">★★★★★</div>
+                    <div class="estrellas" data-rating="5">★★★★★</div>
+                    <button class="leer-mas">
+                    <span class="texto">Leer más</span>
+                    <span class="flecha">▼</span>
+                    </button>
 
                 </div>
 
@@ -95,7 +99,10 @@
                 <div class="valoracion">
                     <span>Valoracion</span>
                     
-                    <div class="estrellas">★★★★★</div>
+                    <div class="estrellas" data-rating="5">★★★★★</div>
+                    <button class="leer-mas">
+                    <span class="texto">Leer más</span>
+                    <span class="flecha">▼</span>
             
                 </div>
 
@@ -122,7 +129,10 @@
                 <div class="valoracion">
                     <span>Valoración</span>
 
-                    <div class="estrellas">★★★★★</div>
+                    <div class="estrellas" data-rating="5">★★★★★</div>
+                    <button class="leer-mas">
+                    <span class="texto">Leer más</span>
+                    <span class="flecha">▼</span>
 
                 </div>
 
@@ -149,7 +159,10 @@
                 <div class="valoracion">
                     <span>Valoración</span>
 
-                    <div class="estrellas">★★★☆☆</div>
+                    <div class="estrellas" data-rating="3">★★★☆☆</div>
+                    <button class="leer-mas">
+                    <span class="texto">Leer más</span>
+                    <span class="flecha">▼</span>
 
                 </div>
 
@@ -176,7 +189,10 @@
                 <div class="valoracion">
                     <span>Valoración</span>
 
-                    <div class="estrellas">★★★★☆</div><!-- 4 estrellas  y media⯨ -->
+                    <div class="estrellas" data-rating="4">★★★★☆</div><!-- 4 estrellas  y media⯨ -->
+                    <button class="leer-mas">
+                    <span class="texto">Leer más</span>
+                    <span class="flecha">▼</span>
 
                 </div>
 
@@ -203,7 +219,10 @@
                 <div class="valoracion">
                     <span>Valoración</span>
 
-                    <div class="estrellas">★★★★☆</div><!-- 4 estrellas  y media⯨ -->
+                    <div class="estrellas" data-rating="4">★★★★☆</div><!-- 4 estrellas  y media⯨ -->
+                    <button class="leer-mas">
+                    <span class="texto">Leer más</span>
+                    <span class="flecha">▼</span>
 
                 </div>
 
@@ -215,7 +234,7 @@
 
             <div class="libro-imagen" >
                 <img src="img/Powerless.webp" alt="Portada del libro Powerless">
-                <span class="categoria">Fantasía</span>
+                <span class="categoria">Fantasía <span class="flecha">▼</span></span>
             </div>
 
             <div class="libro-info">
@@ -230,7 +249,10 @@
                 <div class="valoracion">
                     <span>Valoración</span>
 
-                    <div class="estrellas">★★★★★</div><!-- 4 estrellas  y media⯨ -->
+                    <div class="estrellas" data-rating="5">★★★★★</div><!-- 4 estrellas  y media⯨ -->
+                   <button class="leer-mas">
+                    <span class="texto">Leer más</span>
+                    <span class="flecha">▼</span>
 
                 </div>
 
@@ -257,7 +279,10 @@
                 <div class="valoracion">
                     <span>Valoración</span>
 
-                    <div class="estrellas">★★★★⯨</div><!-- 4 estrellas  y media⯨ -->
+                    <div class="estrellas" data-rating="4,5">★★★★⯨</div><!-- 4 estrellas  y media⯨ -->
+                    <button class="leer-mas">
+                    <span class="texto">Leer más</span>
+                    <span class="flecha">▼</span>
 
                 </div>
 
@@ -284,7 +309,10 @@
                 <div class="valoracion">
                     <span>Valoración</span>
 
-                    <div class="estrellas">★★★★☆</div><!-- 4 estrellas  y media⯨ -->
+                    <div class="estrellas" data-rating="4">★★★★☆</div><!-- 4 estrellas  y media⯨ -->
+                    <button class="leer-mas">
+                    <span class="texto">Leer más</span>
+                    <span class="flecha">▼</span>
 
                 </div>
 
@@ -311,7 +339,10 @@
                 <div class="valoracion">
                     <span>Valoración</span>
 
-                    <div class="estrellas">★★★★☆</div><!-- 4 estrellas  y media⯨ -->
+                    <div class="estrellas" data-rating="4">★★★★☆</div><!-- 4 estrellas  y media⯨ -->
+                    <button class="leer-mas">
+                    <span class="texto">Leer más</span>
+                    <span class="flecha">▼</span>
 
                 </div>
 
@@ -338,7 +369,10 @@
                 <div class="valoracion">
                     <span>Valoración</span>
 
-                    <div class="estrellas">★★★★☆</div><!-- 4 estrellas  y media⯨ -->
+                    <div class="estrellas" data-rating="4">★★★★☆</div><!-- 4 estrellas  y media⯨ -->
+                   <button class="leer-mas">
+                    <span class="texto">Leer más</span>
+                    <span class="flecha">▼</span>
 
                 </div>
 
@@ -365,7 +399,10 @@
                 <div class="valoracion">
                     <span>Valoración</span>
 
-                    <div class="estrellas">★★★☆☆</div><!-- 4 estrellas  y media⯨ -->
+                    <div class="estrellas" data-rating="4">★★★☆☆</div><!-- 4 estrellas  y media⯨ -->
+                    <button class="leer-mas">
+                    <span class="texto">Leer más</span>
+                    <span class="flecha">▼</span>
 
                 </div>
 
@@ -406,6 +443,34 @@ botones.forEach(boton => {
     });
 });
 </script>
+<script>
+// Expandir / Colapsar descripción
+const botonesLeerMas = document.querySelectorAll('.leer-mas');
+
+botonesLeerMas.forEach(boton => {
+    boton.addEventListener('click', () => {
+        const descripcion = boton.closest('.libro-info').querySelector('.descripcion');
+        const texto = boton.querySelector('.texto');
+        const flecha = boton.querySelector('.flecha');
+
+        // Alternar clase para expandir la descripción
+        descripcion.classList.toggle('expandida');
+
+        // Cambiar el texto del botón
+        if(descripcion.classList.contains('expandida')){
+            texto.textContent = 'Leer menos';
+            flecha.classList.add('girada'); // girar flecha
+        } else {
+            texto.textContent = 'Leer más';
+            flecha.classList.remove('girada'); // volver flecha
+        }
+    });
+});
+
+
+
+</script>
+
 
 
 </body>
