@@ -6,12 +6,7 @@
     <title>Camelia Books</title>
     <link rel="stylesheet" href="styles.css">
     <style>
-    header {
-        background-color: #7a7a7a;
-        color: white;
-        padding: 40px 20px;
-        text-align: center;
-    }
+    
     </style>
 </head>
 
@@ -37,25 +32,24 @@
             <p>Bienvenidos a Camelia Books, una web dedicada a describir, valorar y recomendar libros leídos por una persona normal como la mayoría de nosotros.</p>
         </section>
         <!-- Sección de categorías -->
-        <section class="categorias">
+        <section class="categorias" id="categorias">
             <h2>Categorías de libros</h2>
-            <ul>
-                <li>Fantasía</li>
-                <li>Romance</li>
-                <li>Juveniles</li>
-                <li>Ciencia Ficción</li>
-                <li>Clásicos</li>
-                <li>Distopía</li>
-            </ul>
+            <div class="categoria-botones">
+                <button data-categoria="todas">Todas</button>
+                <button data-categoria="fantasia">Fantasía</button>
+                <button data-categoria="juveniles">Juveniles</button>
+                <button data-categoria="distopia">Distopía/Ciencia ficción</button>
+                <button data-categoria="romance">Romance</button>
+            </div>
         </section>
 
         <!-- Sección de tarjetas de libros -->
         <section class="tarjetas">
 
-        <div class="libro-contenedor"> <!-- Alas de Sangre-->
+        <div class="libro-contenedor" data-categoria="fantasia"> <!-- Alas de Sangre-->
 
             <div class="libro-imagen">
-                <img src="img/alasdesangrewhite.jpeg" alt="Portada del libro El Principito">
+                <img src="img/alasdesangrewhite.jpeg" alt="Portada del libro Alas de Sangre">
                 <span class="categoria">Fantasia</span>
             </div>
 
@@ -80,7 +74,7 @@
         </div>    
         
         
-         <div class="libro-contenedor"> <!-- Alas de Hierro-->
+         <div class="libro-contenedor" data-categoria="fantasia"> <!-- Alas de Hierro-->
 
             <div class="libro-imagen">
                 <img src="img/alasdehierro.jpg" alt="Portada del libro Alas de Hierro">
@@ -91,7 +85,7 @@
 
                 <div class="titulo-autor">
                     <h2>Alas de Hierro</h2>
-                    <p class="autor">Rebeca Yarros</p>
+                    <p class="autor">Rebecca Yarros</p>
                 </div>
 
                 <p class= "descripcion">
@@ -109,7 +103,7 @@
 
         </div>
             
-        <div class="libro-contenedor"> <!-- Alas de Ónix-->
+        <div class="libro-contenedor" data-categoria="fantasia"> <!-- Alas de Ónix-->
 
             <div class="libro-imagen">
                 <img src="img/alasdeonixwhite.jpg" alt="Portada del libro Alas de Ónix">
@@ -120,7 +114,7 @@
 
                 <div class="titulo-autor">
                     <h2>Alas de Ónix</h2>
-                    <p class="autor">Rebeca Yarros</p>
+                    <p class="autor">Rebecca Yarros</p>
                 </div>
 
                 <p class="descripcion">"Alas de ónix" es el tercer libro de la saga "Empíreo" de Rebecca Yarros, donde Violet Sorrengail, tras casi dos años en el Colegio de Guerra Basgiath, debe tomar decisiones urgentes para defender su nación contra los enemigos. La historia se centra en la búsqueda de alianzas para la guerra y la de Violet para encontrar una cura para la transformación de Xaden en un venin</p>
@@ -136,10 +130,10 @@
 
         </div>
 
-        <div class="libro-contenedor"> <!-- Etereo-->
+        <div class="libro-contenedor" data-categoria="juveniles"> <!-- Etereo-->
 
             <div class="libro-imagen">
-                <img src="img/etereo.jpg" alt="Portada del libro Alas de Ónix">
+                <img src="img/etereo.jpg" alt="Portada del libro Etereo">
                 <span class="categoria">Juveniles</span>
             </div>
 
@@ -163,10 +157,10 @@
 
         </div>
 
-        <div class="libro-contenedor"> <!-- ciudades de humo-->
+        <div class="libro-contenedor" data-categoria="distopia"> <!-- ciudades de humo-->
 
             <div class="libro-imagen">
-                <img src="img/ciudadesdehumo.jpg" alt="Portada del libro Alas de Ónix">
+                <img src="img/ciudadesdehumo.jpg" alt="Portada del libro Ciudades de Humo">
                 <span class="categoria">Distopía/Ciencia ficción</span>
             </div>
 
@@ -190,10 +184,10 @@
 
         </div>
 
-        <div class="libro-contenedor"> <!-- ciudades de ceniza-->
+        <div class="libro-contenedor" data-categoria="distopia"> <!-- ciudades de ceniza-->
 
             <div class="libro-imagen">
-                <img src="img/ciudadesdeceniza.jpg" alt="Portada del libro Alas de Ónix">
+                <img src="img/ciudadesdeceniza.jpg" alt="Portada del libro Ciudades de Ceniza">
                 <span class="categoria">Distopía/Ciencia ficción</span>
             </div>
 
@@ -217,10 +211,10 @@
 
         </div>
 
-        <div class="libro-contenedor"> <!-- Powerless-->
+        <div class="libro-contenedor" data-categoria="fantasia"> <!-- Powerless-->
 
-            <div class="libro-imagen">
-                <img src="img/Powerless.webp" alt="Portada del libro Alas de Ónix">
+            <div class="libro-imagen" >
+                <img src="img/Powerless.webp" alt="Portada del libro Powerless">
                 <span class="categoria">Fantasía</span>
             </div>
 
@@ -244,10 +238,10 @@
 
         </div>
 
-        <div class="libro-contenedor"> <!-- Powerfull-->
+        <div class="libro-contenedor" data-categoria="fantasia"> <!-- Powerfull-->
 
-            <div class="libro-imagen">
-                <img src="img/powerful.webp" alt="Portada del libro Alas de Ónix">
+            <div class="libro-imagen" >
+                <img src="img/powerful.webp" alt="Portada del libro Powerful">
                 <span class="categoria">Fantasía</span>
             </div>
 
@@ -271,10 +265,10 @@
 
         </div>
 
-        <div class="libro-contenedor"> <!-- Reckless-->
+        <div class="libro-contenedor" data-categoria="fantasia"> <!-- Reckless-->
 
             <div class="libro-imagen">
-                <img src="img/reckless.webp" alt="Portada del libro Alas de Ónix">
+                <img src="img/reckless.webp" alt="Portada del libro Reckless">
                 <span class="categoria">Fantasía</span>
             </div>
 
@@ -298,10 +292,10 @@
 
         </div>
 
-        <div class="libro-contenedor"> <!-- Fearless-->
+        <div class="libro-contenedor" data-categoria="fantasia"> <!-- Fearless-->
 
             <div class="libro-imagen">
-                <img src="img/fearless.jpg" alt="Portada del libro Alas de Ónix">
+                <img src="img/fearless.jpg" alt="Portada del libro Fearless">
                 <span class="categoria">Fantasía</span>
             </div>
 
@@ -325,10 +319,10 @@
 
         </div>
 
-        <div class="libro-contenedor"> <!-- Fearful -->
+        <div class="libro-contenedor" data-categoria="fantasia"> <!-- Fearful -->
 
             <div class="libro-imagen">
-                <img src="img/fearful.jpg" alt="Portada del libro Alas de Ónix">
+                <img src="img/fearful.jpg" alt="Portada del libro Fearful">
                 <span class="categoria">Fantasía</span>
             </div>
 
@@ -352,10 +346,10 @@
 
         </div>
 
-        <div class="libro-contenedor"> <!-- Blind Side -->
+        <div class="libro-contenedor" data-categoria="romance"> <!-- Blind Side -->
 
             <div class="libro-imagen">
-                <img src="img/blindside.jpg" alt="Portada del libro Alas de Ónix">
+                <img src="img/blindside.jpg" alt="Portada del libro Blind Side">
                 <span class="categoria">Romance</span>
             </div>
 
@@ -387,6 +381,32 @@
         <footer>
             <p>&copy; 2025 Camelia Books - Web de reseñas literarias</p>
         </footer>
+
+    <script>
+const botones = document.querySelectorAll('.categoria-botones button');
+const libros = document.querySelectorAll('.libro-contenedor');
+
+botones.forEach(boton => {
+    boton.addEventListener('click', () => {
+        const categoria = boton.dataset.categoria.toLowerCase();
+
+        libros.forEach(libro => {
+            if (
+                categoria === 'todas' || 
+                libro.dataset.categoria.toLowerCase() === categoria
+            ) {
+                libro.style.display = '';
+            } else {
+                libro.style.display = 'none';
+            }
+        });
+
+        botones.forEach(b => b.classList.remove('activo'));
+        boton.classList.add('activo');
+    });
+});
+</script>
+
 
 </body>
 </html>

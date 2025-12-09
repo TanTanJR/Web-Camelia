@@ -2,6 +2,7 @@
 /* ---------------------- */
 /* PALETA CAMELIA BOOKS   */
 /* ---------------------- */
+
 :root {
     --rose: #d8a7b1;
     --mauve: #b48a9c;
@@ -24,13 +25,35 @@ header{
     top: 0;
     left: 0;
     width: 100%;
-    background: var(--cream);
-    color: var(--plum);
+    background: var(--plum);
+    color: var(--plum-light);
     padding: 18px 30px;
     box-shadow: 0 4px 10px rgba(75, 46, 63, 0.12);
     z-index: 1000;
     text-align: center;
 }
+header{
+       
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: var(--plum-light);
+    color: var(--plum);
+    padding: 18px 30px;
+    box-shadow: 0 4px 10px rgba(75, 46, 63, 0.12);
+    z-index: 1000;
+    text-align: center;
+    }
+    .logo{
+    font-size: 32px;
+    font-weight: 700;
+    color:var(--cream);
+    }
+    .subtitle{
+    font-size: 18px;
+    color: var(--cream);
+    font-style: italic;
+    }
 .navbar{
     position: sticky;
     top: 0;
@@ -71,11 +94,11 @@ header{
 .logo{
     font-size: 32px;
     font-weight: 700;
-    color:var(--plum);
+    color:var(--cream);
 }
 .subtitle{
     font-size: 18px;
-    color: var(--plum-light);
+    color: var(--cream);
     font-style: italic;
 }
 /*main*/
@@ -90,25 +113,41 @@ main {
 
 .intro {
     background: white;
-    padding: 20px;
+    padding: 10px;
     border-radius: 10px;
     box-shadow: 0 5px 10px rgba(0,0,0,0.1);
 }
 
-.categorias ul{
-    list-style: none;
-    padding: 0;
+/*------------------------*/
+/*Botones*/
+/*------------------------*/
+.categoria-botones {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
-.categorias li{
-    padding: 8px 0;
-    font-size: 18px;
-    border-bottom: 1px solid #e2e2e2;
+.categoria-botones button {
+    background: var(--rose);
+    border: none;
+    padding: 8px 14px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 600;
+    color: var(--plum);
+    transition: 0.3s ease;
 }
 
-.categorias li:last-child{
-    border-bottom: none;
+.categoria-botones button:hover {
+    background: var(--mauve);
+    color: white;
 }
+
+.categoria-botones button.activo {
+    background: var(--plum);
+    color: white;
+}
+
 
 /* ---------------------- */
 /* TARJETAS               */
