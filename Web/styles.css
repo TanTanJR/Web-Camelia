@@ -160,6 +160,8 @@ main {
 }
 
 
+
+
 /* ---------------------- */
 /* TARJETAS               */
 /* ---------------------- */
@@ -306,8 +308,16 @@ footer{
     background: #7a7a7a;
     color: black;
     text-align: center;
-    padding: 20px 0;
-    margin-top: 45px;
+    padding: 10px 0;
+    margin-top: 35px;
+}
+footer a {
+    color: #fff;
+    text-decoration: underline;
+}
+
+footer a:hover {
+    color: var(--rose);
 }
 
 @media (max-width: 700px){
@@ -333,4 +343,96 @@ footer{
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+}
+
+/* Estilos para el mensaje de "No se han encontrado libros" */
+.buscador {
+  margin: 10px 0 25px;
+  text-align: center;
+}
+
+.buscador-wrapper {
+  position: relative;
+  max-width: 400px;
+  margin: 0 auto;
+}
+#buscador-libros {
+  width: 100%;
+  padding: 12px 40px 12px 18px; /* espacio derecho para la X */
+  border-radius: 25px;
+  border: 2px solid var(--rose);
+  font-size: 15px;
+  outline: none;
+  box-sizing: border-box;
+}
+#limpiar-buscador {
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  display: none;
+  color: var(--plum);
+  line-height: 1;
+  padding: 0;
+  
+  /* Fijamos posición y evitamos movimiento al hover */
+  pointer-events: auto;
+}
+#limpiar-buscador:hover,
+#limpiar-buscador:focus {
+  color: #c85f7e;
+  transform: translateY(-50%) scale(1.1); /* solo escala, no cambia posición */
+  outline: none;
+}
+
+.buscador-wrapper p#contador-resultados,
+.buscador-wrapper + #sin-resultados {
+  margin-top: 4px;
+  font-size: 14px;
+  color: #777;
+  position: relative; /* opcional */
+}
+
+#sin-resultados {
+  display: none;
+  margin: 4px 0 0; /* pegado al input */
+  max-width: 100%;
+  padding: 10px 18px;
+  background: #fff3f6;
+  color: var(--plum);
+  border-radius: 18px;
+  font-size: 14px;
+  box-shadow: 0 4px 10px rgba(75,46,63,0.1);
+}
+#sin-resultados::before {
+  content: "🔍 ";
+}
+
+#sin-resultados,
+#contador-resultados {
+  margin: 0;
+  font-size: 14px;
+  color: var(--plum);
+}
+#contador-resultados {
+  margin: 4px 0 0; /* pegado al input */
+  font-size: 14px;
+  color: #777;
+}
+
+.libro-contenedor {
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.libro-contenedor.oculto {
+  opacity: 0;
+  transform: scale(0.97);
+  pointer-events: none;
+}
+html {
+  scroll-behavior: smooth;
 }

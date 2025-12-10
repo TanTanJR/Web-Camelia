@@ -19,9 +19,9 @@
     <nav class="navbar">
         <ul>
             <li><a href="#">Inicio</a></li>
-            <li><a href="#">Reseñas</a></li>
-            <li><a href="#">Categorías</a></li>
-            <li><a href="#">Contacto</a></li>
+            <li><a href="recomendaciones.php">Recomendaciones</a></li>
+            <li><a href="index.php#categorias">Categorías</a></li>
+            <li><a href="index.php#footer">Contacto</a></li>
         </ul>
 
     </nav>
@@ -41,6 +41,18 @@
                 <button data-categoria="distopia">Distopía/Ciencia ficción</button>
                 <button data-categoria="romance">Romance</button>
             </div>
+        </section>
+        <!--Buscador de libros-->
+        <section class="buscador">
+            <div class="buscador-wrapper">
+            <input type="text" id="buscador-libros" placeholder="Buscar por título o autor...">
+            <button id="limpiar-buscador" aria-label="Limpiar búsqueda">✕</button>
+            
+    
+            </div>
+            <p id="contador-resultados"></p>
+            <p id="sin-resultados">No se han encontrado libros</p>
+           
         </section>
 
         <!-- Sección de tarjetas de libros -->
@@ -189,7 +201,7 @@
                 <div class="valoracion">
                     <span>Valoración</span>
 
-                    <div class="estrellas" data-rating="4">★★★★☆</div><!-- 4 estrellas  y media⯨ -->
+                    <div class="estrellas" data-rating="4">★★★★☆</div>
                     <button class="leer-mas">
                     <span class="texto">Leer más</span>
                     <span class="flecha">▼</span>
@@ -219,7 +231,7 @@
                 <div class="valoracion">
                     <span>Valoración</span>
 
-                    <div class="estrellas" data-rating="4">★★★★☆</div><!-- 4 estrellas  y media⯨ -->
+                    <div class="estrellas" data-rating="4">★★★★☆</div>
                     <button class="leer-mas">
                     <span class="texto">Leer más</span>
                     <span class="flecha">▼</span>
@@ -249,7 +261,7 @@
                 <div class="valoracion">
                     <span>Valoración</span>
 
-                    <div class="estrellas" data-rating="5">★★★★★</div><!-- 4 estrellas  y media⯨ -->
+                    <div class="estrellas" data-rating="5">★★★★★</div>
                    <button class="leer-mas">
                     <span class="texto">Leer más</span>
                     <span class="flecha">▼</span>
@@ -279,7 +291,7 @@
                 <div class="valoracion">
                     <span>Valoración</span>
 
-                    <div class="estrellas" data-rating="4,5">★★★★⯨</div><!-- 4 estrellas  y media⯨ -->
+                    <div class="estrellas" data-rating="4,5">★★★★⯨</div>
                     <button class="leer-mas">
                     <span class="texto">Leer más</span>
                     <span class="flecha">▼</span>
@@ -309,7 +321,7 @@
                 <div class="valoracion">
                     <span>Valoración</span>
 
-                    <div class="estrellas" data-rating="4">★★★★☆</div><!-- 4 estrellas  y media⯨ -->
+                    <div class="estrellas" data-rating="4">★★★★☆</div>
                     <button class="leer-mas">
                     <span class="texto">Leer más</span>
                     <span class="flecha">▼</span>
@@ -339,7 +351,7 @@
                 <div class="valoracion">
                     <span>Valoración</span>
 
-                    <div class="estrellas" data-rating="4">★★★★☆</div><!-- 4 estrellas  y media⯨ -->
+                    <div class="estrellas" data-rating="4">★★★★☆</div>
                     <button class="leer-mas">
                     <span class="texto">Leer más</span>
                     <span class="flecha">▼</span>
@@ -369,7 +381,7 @@
                 <div class="valoracion">
                     <span>Valoración</span>
 
-                    <div class="estrellas" data-rating="4">★★★★☆</div><!-- 4 estrellas  y media⯨ -->
+                    <div class="estrellas" data-rating="4">★★★★☆</div>
                    <button class="leer-mas">
                     <span class="texto">Leer más</span>
                     <span class="flecha">▼</span>
@@ -399,7 +411,7 @@
                 <div class="valoracion">
                     <span>Valoración</span>
 
-                    <div class="estrellas" data-rating="4">★★★☆☆</div><!-- 4 estrellas  y media⯨ -->
+                    <div class="estrellas" data-rating="4">★★★☆☆</div>
                     <button class="leer-mas">
                     <span class="texto">Leer más</span>
                     <span class="flecha">▼</span>
@@ -415,62 +427,93 @@
         </section>
         
     </main>
-        <footer>
-            <p>&copy; 2025 Camelia Books - Web de reseñas literarias</p>
-        </footer>
-
-    <script>
-const botones = document.querySelectorAll('.categoria-botones button');
-const libros = document.querySelectorAll('.libro-contenedor');
-
-botones.forEach(boton => {
-    boton.addEventListener('click', () => {
-        const categoria = boton.dataset.categoria.toLowerCase();
-
-        libros.forEach(libro => {
-            if (
-                categoria === 'todas' || 
-                libro.dataset.categoria.toLowerCase() === categoria
-            ) {
-                libro.style.display = '';
-            } else {
-                libro.style.display = 'none';
-            }
-        });
-
-        botones.forEach(b => b.classList.remove('activo'));
-        boton.classList.add('activo');
-    });
-});
-</script>
+        <footer id="footer">
+    <p>&copy; 2025 Camelia Books - Web de reseñas literarias</p>
+    <p>📧 <a href="mailto:info@cameliabooks.com">info@cameliabooks.com</a> | 
+       📸 <a href="https://www.instagram.com/camelia__09?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank">Instagram</a>
+    </p>
+</footer>
 <script>
-// Expandir / Colapsar descripción
-const botonesLeerMas = document.querySelectorAll('.leer-mas');
+const libros = document.querySelectorAll('.libro-contenedor');
+const botones = document.querySelectorAll('.categoria-botones button');
+const buscador = document.getElementById('buscador-libros');
+const limpiarBuscador = document.getElementById('limpiar-buscador');
+const sinResultados = document.getElementById('sin-resultados');
+const contador = document.getElementById('contador-resultados');
+const contenedor = document.querySelector('.tarjetas');
 
-botonesLeerMas.forEach(boton => {
-    boton.addEventListener('click', () => {
-        const descripcion = boton.closest('.libro-info').querySelector('.descripcion');
-        const texto = boton.querySelector('.texto');
-        const flecha = boton.querySelector('.flecha');
+// Inicializar categoría "Todas"
+botones[0].classList.add('activo');
 
-        // Alternar clase para expandir la descripción
-        descripcion.classList.toggle('expandida');
+// Función central: filtra por categoría y buscador y mueve resultados al inicio
+function filtrarLibros() {
+  const texto = buscador.value.toLowerCase();
+  let visibles = 0;
+  
+  const categoriaActiva = document.querySelector('.categoria-botones button.activo')?.dataset.categoria.toLowerCase() || 'todas';
 
-        // Cambiar el texto del botón
-        if(descripcion.classList.contains('expandida')){
-            texto.textContent = 'Leer menos';
-            flecha.classList.add('girada'); // girar flecha
-        } else {
-            texto.textContent = 'Leer más';
-            flecha.classList.remove('girada'); // volver flecha
-        }
-    });
+  libros.forEach(libro => {
+    const titulo = libro.querySelector('h2').textContent.toLowerCase();
+    const autor = libro.querySelector('.autor').textContent.toLowerCase();
+    const categoriaLibro = libro.dataset.categoria.toLowerCase();
+
+    const coincideTexto = titulo.includes(texto) || autor.includes(texto);
+    const coincideCategoria = categoriaActiva === 'todas' || categoriaLibro === categoriaActiva;
+
+    if (coincideTexto && coincideCategoria) {
+      libro.classList.remove('oculto');
+      visibles++;
+      // Mover libro al inicio de la sección
+      contenedor.prepend(libro);
+    } else {
+      libro.classList.add('oculto');
+    }
+  });
+
+  // Contador y mensaje sin resultados
+  contador.textContent = visibles === 1 ? '1 libro encontrado' : `${visibles} libros encontrados`;
+  sinResultados.style.display = visibles === 0 ? 'block' : 'none';
+  limpiarBuscador.style.display = texto ? 'block' : 'none';
+}
+
+// Escucha input buscador
+buscador.addEventListener('input', filtrarLibros);
+
+// Botón X para limpiar
+limpiarBuscador.addEventListener('click', () => {
+  buscador.value = '';
+  filtrarLibros();
+  buscador.focus();
 });
 
+// Filtrar al cambiar categoría
+botones.forEach(boton => {
+  boton.addEventListener('click', () => {
+    botones.forEach(b => b.classList.remove('activo'));
+    boton.classList.add('activo');
+    filtrarLibros();
+  });
+});
 
+// Leer más / Leer menos
+const botonesLeerMas = document.querySelectorAll('.leer-mas');
+ botonesLeerMas.forEach(boton => {
+  boton.addEventListener('click', () => {
+    const descripcion = boton.closest('.libro-info').querySelector('.descripcion');
+    const texto = boton.querySelector('.texto');
+    const flecha = boton.querySelector('.flecha');
 
-</script>
+    descripcion.classList.toggle('expandida');
 
+    if (descripcion.classList.contains('expandida')) {
+      texto.textContent = 'Leer menos';
+      flecha.classList.add('girada');
+    } else {
+      texto.textContent = 'Leer más';
+      flecha.classList.remove('girada');
+    }
+  });
+});</script>
 
 
 </body>
