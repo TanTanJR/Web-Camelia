@@ -1,134 +1,4 @@
-// ============================================================
-// 1. CATÁLOGO DE LIBROS
-// Para añadir un libro nuevo, copia uno de estos objetos
-// y cambia sus datos.
-// ============================================================
-
-const libros = [
-  {
-    titulo: "Alas de Sangre",
-    autor: "Rebecca Yarros",
-    categoria: "fantasia",
-    etiqueta: "Fantasía",
-    imagen: "img/alasdesangrewhite.jpeg",
-    valoracion: 5,
-    descripcion:
-      "Violet Sorrengail es forzada a unirse al brutal Colegio de Guerra de Basgiath para entrenar como jinete de dragón.",
-  },
-  {
-    titulo: "Alas de Hierro",
-    autor: "Rebecca Yarros",
-    categoria: "fantasia",
-    etiqueta: "Fantasía",
-    imagen: "img/alasdehierro.jpg",
-    valoracion: 5,
-    descripcion:
-      "Continúan las pruebas de Violet para convertirse en jinete de dragón y su lucha contra los secretos del colegio.",
-  },
-  {
-    titulo: "Alas de Ónix",
-    autor: "Rebecca Yarros",
-    categoria: "fantasia",
-    etiqueta: "Fantasía",
-    imagen: "img/alasdeonixwhite.jpg",
-    valoracion: 5,
-    descripcion:
-      "Violet debe defender su nación, buscar alianzas para la guerra y encontrar una cura para la transformación de Xaden.",
-  },
-  {
-    titulo: "Etéreo",
-    autor: "Joana Marcús",
-    categoria: "juveniles",
-    etiqueta: "Juvenil",
-    imagen: "img/etereo.jpg",
-    valoracion: 3,
-    descripcion:
-      "Caleb no es un chico corriente. Sus habilidades especiales y una vida complicada lo han llevado a trabajar para gente de moral dudosa.",
-  },
-  {
-    titulo: "Ciudades de Humo",
-    autor: "Joana Marcús",
-    categoria: "distopia",
-    etiqueta: "Distopía",
-    imagen: "img/ciudadesdehumo.jpg",
-    valoracion: 4,
-    descripcion:
-      "Alice, una androide, debe aprender a vivir como humana después de escapar de una existencia controlada.",
-  },
-  {
-    titulo: "Ciudades de Ceniza",
-    autor: "Joana Marcús",
-    categoria: "distopia",
-    etiqueta: "Distopía",
-    imagen: "img/ciudadesdeceniza.jpg",
-    valoracion: 4,
-    descripcion:
-      "Alice busca venganza tras la destrucción de su ciudad en un mundo de acción, romance, androides y experimentos prohibidos.",
-  },
-  {
-    titulo: "Powerless",
-    autor: "Lauren Roberts",
-    categoria: "fantasia",
-    etiqueta: "Fantasía",
-    imagen: "img/Powerless.webp",
-    valoracion: 5,
-    descripcion:
-      "Paedyn finge ser psíquica para sobrevivir en Ilya y acaba participando en las peligrosas Pruebas de la Purga.",
-  },
-  {
-    titulo: "Powerful",
-    autor: "Lauren Roberts",
-    categoria: "fantasia",
-    etiqueta: "Fantasía",
-    imagen: "img/powerful.webp",
-    valoracion: 4.5,
-    descripcion:
-      "Adena y Mak afrontan peligrosos desafíos mientras desarrollan una relación marcada por la tensión, el romance y la lealtad.",
-  },
-  {
-    titulo: "Reckless",
-    autor: "Lauren Roberts",
-    categoria: "fantasia",
-    etiqueta: "Fantasía",
-    imagen: "img/reckless.webp",
-    valoracion: 4,
-    descripcion:
-      "Paedyn huye después de matar al rey. Kai debe perseguirla, aunque se debate entre la lealtad, el deber y el deseo.",
-  },
-  {
-    titulo: "Fearless",
-    autor: "Lauren Roberts",
-    categoria: "fantasia",
-    etiqueta: "Fantasía",
-    imagen: "img/fearless.jpg",
-    valoracion: 4,
-    descripcion:
-      "Paedyn y Kai se enfrentan a decisiones difíciles en una historia sobre el poder, el amor, el destino y la redención.",
-  },
-  {
-    titulo: "Fearful",
-    autor: "Lauren Roberts",
-    categoria: "fantasia",
-    etiqueta: "Fantasía",
-    imagen: "img/fearful.jpg",
-    valoracion: 4,
-    descripcion:
-      "Una decisión trascendental del rey lleva a Mara de vuelta a Ilya para tratar de comprender la mente de Kitt Azer.",
-  },
-  {
-    titulo: "Blind Side",
-    autor: "Kandi Steiner",
-    categoria: "romance",
-    etiqueta: "Romance",
-    imagen: "img/blindside.jpg",
-    valoracion: 3,
-    descripcion:
-      "Una coordinadora de relaciones públicas debe lidiar con Clay Johnson después de que una ruptura lo convierta en su mayor dolor de cabeza.",
-  },
-];
-
-// ============================================================
-// 2. ELEMENTOS DE LA PÁGINA
+// 1. ELEMENTOS DE LA PÁGINA
 // ============================================================
 
 const listaLibros = document.querySelector("#lista-libros");
@@ -137,11 +7,13 @@ const botonLimpiar = document.querySelector("#limpiar-buscador");
 const contadorResultados = document.querySelector("#contador-resultados");
 const mensajeSinResultados = document.querySelector("#sin-resultados");
 const botonesCategoria = document.querySelectorAll("[data-categoria]");
+const modalLibro = document.querySelector("#modal-libro");
+const botonCerrarModal = document.querySelector("#cerrar-modal");
 
 let categoriaActiva = "todas";
 
 // ============================================================
-// 3. FUNCIONES
+// 2. FUNCIONES
 // ============================================================
 
 function normalizarTexto(texto) {
@@ -202,14 +74,8 @@ function crearTarjeta(libro, numero) {
             ${crearEstrellas(libro.valoracion)}
           </div>
 
-          <button
-            class="leer-mas"
-            type="button"
-            aria-expanded="false"
-            aria-controls="descripcion-${numero}"
-          >
-            <span>Leer más</span>
-            <span class="flecha" aria-hidden="true">⌄</span>
+          <button class="ver-ficha" type="button" data-indice="${numero}">
+            Ver reseña
           </button>
         </div>
       </div>
@@ -255,19 +121,31 @@ function cambiarCategoria(botonPulsado) {
   mostrarLibros();
 }
 
-function alternarDescripcion(boton) {
-  const idDescripcion = boton.getAttribute("aria-controls");
-  const descripcion = document.getElementById(idDescripcion);
-  const estaExpandida = descripcion.classList.toggle("expandida");
+function abrirFichaLibro(indice) {
+  const libro = libros[indice];
 
-  boton.setAttribute("aria-expanded", estaExpandida);
-  boton.querySelector("span").textContent = estaExpandida
-    ? "Leer menos"
-    : "Leer más";
+  const imagenModal = document.querySelector("#modal-imagen");
+  imagenModal.src = libro.imagen;
+  imagenModal.alt = `Portada de ${libro.titulo}`;
+
+  document.querySelector("#modal-categoria").textContent = libro.etiqueta;
+  document.querySelector("#modal-titulo").textContent = libro.titulo;
+  document.querySelector("#modal-autor").textContent = libro.autor;
+  document.querySelector("#modal-saga").textContent = libro.saga;
+  document.querySelector("#modal-valoracion").innerHTML = crearEstrellas(
+    libro.valoracion,
+  );
+  document.querySelector("#modal-descripcion").textContent = libro.descripcion;
+
+  modalLibro.showModal();
+}
+
+function cerrarFichaLibro() {
+  modalLibro.close();
 }
 
 // ============================================================
-// 4. EVENTOS
+// 3. EVENTOS
 // ============================================================
 
 botonesCategoria.forEach((boton) => {
@@ -283,15 +161,23 @@ botonLimpiar.addEventListener("click", () => {
 });
 
 listaLibros.addEventListener("click", (evento) => {
-  const botonLeerMas = evento.target.closest(".leer-mas");
+  const botonVerFicha = evento.target.closest(".ver-ficha");
 
-  if (botonLeerMas) {
-    alternarDescripcion(botonLeerMas);
+  if (botonVerFicha) {
+    abrirFichaLibro(Number(botonVerFicha.dataset.indice));
+  }
+});
+
+botonCerrarModal.addEventListener("click", cerrarFichaLibro);
+
+modalLibro.addEventListener("click", (evento) => {
+  if (evento.target === modalLibro) {
+    cerrarFichaLibro();
   }
 });
 
 // ============================================================
-// 5. INICIO
+// 4. INICIO
 // ============================================================
 
 document.querySelector("#anio").textContent = new Date().getFullYear();

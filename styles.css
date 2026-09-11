@@ -352,7 +352,7 @@ h3 {
   color: #d39a30;
   white-space: nowrap;
 }
-.leer-mas {
+.ver-ficha {
   flex: 0 0 auto;
   padding: 0.45rem 0.7rem;
   color: var(--plum);
@@ -361,14 +361,6 @@ h3 {
   font-size: 0.78rem;
   font-weight: 700;
   cursor: pointer;
-}
-.flecha {
-  display: inline-block;
-  margin-left: 0.2rem;
-  transition: 0.2s;
-}
-.leer-mas[aria-expanded="true"] .flecha {
-  transform: rotate(180deg);
 }
 .sin-resultados,
 .lista-vacia {
@@ -472,6 +464,100 @@ footer p {
   margin-top: 2rem;
   font-weight: 600;
 }
+
+/* Ficha emergente del libro */
+.modal-libro {
+  width: min(850px, calc(100% - 2rem));
+  max-height: calc(100vh - 2rem);
+  padding: 0;
+  overflow: auto;
+  color: var(--plum);
+  background: var(--white);
+  border: 0;
+  border-radius: 1.5rem;
+  box-shadow: var(--shadow);
+}
+
+.modal-libro::backdrop {
+  background: rgba(40, 23, 33, 0.72);
+  backdrop-filter: blur(4px);
+}
+
+.cerrar-modal {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 1;
+  width: 2.5rem;
+  height: 2.5rem;
+  color: var(--plum);
+  background: rgba(255, 255, 255, 0.92);
+  border: 0;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.modal-contenido {
+  display: grid;
+  grid-template-columns: minmax(230px, 35%) 1fr;
+}
+
+.modal-contenido > img {
+  width: 100%;
+  height: 100%;
+  min-height: 500px;
+  object-fit: cover;
+}
+
+.modal-informacion {
+  padding: clamp(1.75rem, 5vw, 3rem);
+}
+
+.modal-categoria {
+  display: inline-block;
+  padding: 0.35rem 0.75rem;
+  color: white;
+  background: var(--plum);
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.modal-informacion h2 {
+  margin: 1rem 0 0;
+  font-size: clamp(2.2rem, 5vw, 3.6rem);
+}
+
+.modal-autor {
+  margin: 0.25rem 0 1.5rem;
+  color: var(--plum-light);
+  font-style: italic;
+}
+
+.modal-datos {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin: 0 0 2rem;
+  padding: 1rem 0;
+  border-block: 1px solid rgba(75, 46, 63, 0.12);
+}
+
+.modal-datos div {
+  display: grid;
+  gap: 0.25rem;
+}
+
+.modal-datos dt {
+  color: var(--plum-light);
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.modal-datos dd {
+  margin: 0;
+}
 @media (max-width: 900px) {
   .controles {
     grid-template-columns: 1fr;
@@ -525,8 +611,15 @@ footer p {
     align-items: start;
     flex-direction: column;
   }
-  .leer-mas {
+  .ver-ficha {
     padding-left: 0;
+  }
+  .modal-contenido {
+    grid-template-columns: 1fr;
+  }
+  .modal-contenido > img {
+    height: 280px;
+    min-height: 0;
   }
   footer {
     align-items: flex-start;
