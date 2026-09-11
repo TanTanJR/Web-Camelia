@@ -136,6 +136,18 @@ function abrirFichaLibro(indice) {
     libro.valoracion,
   );
   document.querySelector("#modal-descripcion").textContent = libro.descripcion;
+  document.querySelector("#modal-opinion").textContent = libro.opinion;
+
+  const listaDestacados = document.querySelector("#modal-destacados");
+  listaDestacados.innerHTML = libro.puntosDestacados
+    .map((punto) => `<li>${punto}</li>`)
+    .join("");
+
+  const avisoSpoilers = document.querySelector("#modal-spoilers");
+  avisoSpoilers.textContent = libro.contieneSpoilers
+    ? "Contiene spoilers"
+    : "Sin spoilers";
+  avisoSpoilers.classList.toggle("con-spoilers", libro.contieneSpoilers);
 
   modalLibro.showModal();
 }
