@@ -558,6 +558,61 @@ footer p {
 .modal-datos dd {
   margin: 0;
 }
+
+.modal-opinion {
+  margin-top: 1.75rem;
+  padding: 1.25rem;
+  background: var(--cream);
+  border-radius: 1rem;
+}
+
+.modal-opinion-cabecera {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.modal-opinion h3,
+.modal-informacion > h3 {
+  margin: 0 0 0.65rem;
+}
+
+.modal-opinion p {
+  margin: 0;
+}
+
+.aviso-spoilers {
+  flex: 0 0 auto;
+  padding: 0.25rem 0.6rem;
+  color: #315b42;
+  background: #dcecdf;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.aviso-spoilers.con-spoilers {
+  color: #7b3444;
+  background: #f5dce2;
+}
+
+.modal-destacados {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.modal-destacados li {
+  padding: 0.4rem 0.7rem;
+  background: white;
+  border: 1px solid var(--rose);
+  border-radius: 999px;
+  font-size: 0.82rem;
+}
 @media (max-width: 900px) {
   .controles {
     grid-template-columns: 1fr;
