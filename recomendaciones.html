@@ -1,3 +1,74 @@
-<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Guarda libros que te gustaría ver reseñados en Camelia Books."><title>Recomendaciones | Camelia Books</title><link rel="stylesheet" href="styles.css"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"><script src="js/recomendaciones.js" defer></script></head><body>
-<header class="cabecera cabecera-compacta"><a class="marca" href="index.html"><span aria-hidden="true">🌸</span><span>Camelia Books</span></a></header><nav class="navbar" aria-label="Navegación principal"><a href="index.html">Inicio</a><a class="activo" href="recomendaciones.html">Recomendaciones</a><a href="index.html#catalogo">Libros</a><a href="index.html#footer">Contacto</a></nav>
-<main class="pagina-recomendaciones"><section class="recomendaciones-panel"><p class="intro-etiqueta">Tu lista</p><h1>¿Qué libro debería leer después?</h1><p>Añade un título y su autor. La lista se guardará en este dispositivo para que puedas volver a ella cuando quieras.</p><form id="form-recomendacion"><label for="titulo-recom">Título del libro</label><input type="text" id="titulo-recom" placeholder="Por ejemplo: El principito" required maxlength="100"><label for="autor-recom">Autor o autora</label><input type="text" id="autor-recom" placeholder="Por ejemplo: Antoine de Saint-Exupéry" required maxlength="100"><button class="boton-principal" type="submit">Añadir recomendación</button></form><div class="lista-cabecera"><h2>Libros apuntados</h2><span id="total-recomendaciones" aria-live="polite"></span></div><p id="lista-vacia" class="lista-vacia">Todavía no has añadido ninguna recomendación.</p><ul id="lista-recomendaciones" class="lista-recomendaciones"></ul><a class="volver" href="index.html">← Volver a la biblioteca</a></section></main></body></html>
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta
+      name="description"
+      content="Guarda libros que te gustaría ver reseñados en Camelia Books."
+    />
+    <title>Recomendaciones | Camelia Books</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="js/recomendaciones.js" defer></script>
+  </head>
+  <body>
+    <header class="cabecera cabecera-compacta">
+      <a class="marca" href="index.html">
+        <span aria-hidden="true">🌸</span>
+        <span>Camelia Books</span>
+      </a>
+    </header>
+    <nav class="navbar" aria-label="Navegación principal">
+      <a href="index.html">Inicio</a>
+      <a class="activo" href="recomendaciones.html">Recomendaciones</a>
+      <a href="index.html#catalogo">Libros</a>
+      <a href="index.html#footer">Contacto</a>
+    </nav>
+    <main class="pagina-recomendaciones">
+      <section class="recomendaciones-panel">
+        <p class="intro-etiqueta">Tu lista</p>
+        <h1>¿Qué libro debería leer después?</h1>
+        <p>
+          Añade un título y su autor. La lista se guardará en este dispositivo
+          para que puedas volver a ella cuando quieras.
+        </p>
+        <form id="form-recomendacion">
+          <label for="titulo-recom">Título del libro</label>
+          <input
+            type="text"
+            id="titulo-recom"
+            placeholder="Por ejemplo: El principito"
+            required
+            maxlength="100"
+          />
+          <label for="autor-recom">Autor o autora</label>
+          <input
+            type="text"
+            id="autor-recom"
+            placeholder="Por ejemplo: Antoine de Saint-Exupéry"
+            required
+            maxlength="100"
+          />
+          <button class="boton-principal" type="submit">
+            Añadir recomendación
+          </button>
+        </form>
+        <div class="lista-cabecera">
+          <h2>Libros apuntados</h2>
+          <span id="total-recomendaciones" aria-live="polite"></span>
+        </div>
+        <p id="lista-vacia" class="lista-vacia">
+          Todavía no has añadido ninguna recomendación.
+        </p>
+        <ul id="lista-recomendaciones" class="lista-recomendaciones"></ul>
+        <a class="volver" href="index.html">← Volver a la biblioteca</a>
+      </section>
+    </main>
+  </body>
+</html>
