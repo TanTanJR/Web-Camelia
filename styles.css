@@ -266,7 +266,7 @@ h3 {
   position: relative;
   min-height: 100%;
   padding: 0.85rem;
-  background: #eadde2;
+  background: var(--rose);
 }
 .libro-imagen img {
   width: 100%;
