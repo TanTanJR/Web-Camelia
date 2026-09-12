@@ -8,7 +8,7 @@ const libros = [
     categoria: "fantasia",
     etiqueta: "Fantasía",
     saga: "Empíreo",
-    imagen: "img/alasdesangrewhite.jpeg",
+    imagen: "img/alasdesangre-rosa.webp",
     valoracion: 5,
     opinion:
       "Una lectura muy adictiva, con tensión constante y personajes que consiguen que quieras seguir leyendo.",
@@ -23,7 +23,7 @@ const libros = [
     categoria: "fantasia",
     etiqueta: "Fantasía",
     saga: "Empíreo",
-    imagen: "img/alasdehierro.jpg",
+    imagen: "img/alasdehierro-rosa.webp",
     valoracion: 5,
     opinion:
       "Mantiene la emoción de la primera parte y amplía el mundo, los conflictos y las relaciones entre los personajes.",
@@ -38,7 +38,7 @@ const libros = [
     categoria: "fantasia",
     etiqueta: "Fantasía",
     saga: "Empíreo",
-    imagen: "img/alasdeonixwhite.jpg",
+    imagen: "img/alasdeonix-rosa.webp",
     valoracion: 5,
     opinion:
       "Una continuación intensa que eleva el peligro y obliga a sus protagonistas a tomar decisiones difíciles.",
@@ -53,7 +53,7 @@ const libros = [
     categoria: "juveniles",
     etiqueta: "Juvenil",
     saga: "Trilogía Extraños",
-    imagen: "img/etereo.jpg",
+    imagen: "img/etereo-rosa.webp",
     valoracion: 3,
     opinion:
       "Tiene una premisa interesante y personajes complejos, aunque algunas partes avanzan más despacio.",
@@ -68,7 +68,7 @@ const libros = [
     categoria: "distopia",
     etiqueta: "Distopía",
     saga: "Trilogía Fuego",
-    imagen: "img/ciudadesdehumo.jpg",
+    imagen: "img/ciudadesdehumo-rosa.webp",
     valoracion: 4,
     opinion:
       "Destaca por su mundo distópico y por la evolución de Alice mientras descubre qué significa vivir como humana.",
@@ -83,7 +83,7 @@ const libros = [
     categoria: "distopia",
     etiqueta: "Distopía",
     saga: "Trilogía Fuego",
-    imagen: "img/ciudadesdeceniza.jpg",
+    imagen: "img/ciudadesdeceniza-rosa.webp",
     valoracion: 4,
     opinion:
       "Una segunda parte con más acción y consecuencias, que continúa desarrollando el mundo de la trilogía.",
@@ -98,7 +98,7 @@ const libros = [
     categoria: "fantasia",
     etiqueta: "Fantasía",
     saga: "Powerless",
-    imagen: "img/Powerless.webp",
+    imagen: "img/powerless-rosa.webp",
     valoracion: 5,
     opinion:
       "Una fantasía muy entretenida, con pruebas peligrosas, rivalidad y una tensión romántica que sostiene la historia.",
@@ -113,7 +113,7 @@ const libros = [
     categoria: "fantasia",
     etiqueta: "Fantasía",
     saga: "Powerless",
-    imagen: "img/powerful.webp",
+    imagen: "img/powerful-rosa.webp",
     valoracion: 4.5,
     opinion:
       "Una historia más breve y cercana que permite conocer mejor a Adena y aporta emoción al universo de la saga.",
@@ -128,7 +128,7 @@ const libros = [
     categoria: "fantasia",
     etiqueta: "Fantasía",
     saga: "Powerless",
-    imagen: "img/reckless.webp",
+    imagen: "img/reckless-rosa.webp",
     valoracion: 4,
     opinion:
       "La persecución entre Paedyn y Kai mantiene la tensión, mientras ambos se enfrentan a lo que sienten y a su deber.",
@@ -147,7 +147,7 @@ const libros = [
     categoria: "fantasia",
     etiqueta: "Fantasía",
     saga: "Powerless",
-    imagen: "img/fearless.jpg",
+    imagen: "img/fearless-rosa.webp",
     valoracion: 4,
     opinion:
       "Una entrega emocional que pone a prueba a los protagonistas y profundiza en el sacrificio y la redención.",
@@ -162,7 +162,7 @@ const libros = [
     categoria: "fantasia",
     etiqueta: "Fantasía",
     saga: "Powerless",
-    imagen: "img/fearful.jpg",
+    imagen: "img/fearful-rosa.webp",
     valoracion: 4,
     opinion:
       "Una mirada diferente al universo de Ilya, centrada en personajes y motivaciones que quedaban en segundo plano.",
@@ -181,7 +181,7 @@ const libros = [
     categoria: "romance",
     etiqueta: "Romance",
     saga: "Red Zone Rivals",
-    imagen: "img/blindside.jpg",
+    imagen: "img/blindside-rosa.webp",
     valoracion: 3,
     opinion:
       "Un romance universitario ligero, con química entre los protagonistas y situaciones fáciles de disfrutar.",
