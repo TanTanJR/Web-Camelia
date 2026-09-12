@@ -147,11 +147,7 @@ const libros = [
     categoria: "fantasia",
     etiqueta: "Fantasía",
     saga: "Powerless",
-<<<<<<< HEAD
-    imagen: "img/fearless-rosa.webp",
-=======
-    imagen: "img/fearless-rosa.png",
->>>>>>> 28b6d5f (Actualizar imágenes de los libros)
+    imagen: "img/fearless-rosa.webp", 
     valoracion: 4,
     opinion:
       "Una entrega emocional que pone a prueba a los protagonistas y profundiza en el sacrificio y la redención.",
