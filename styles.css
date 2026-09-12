@@ -27,7 +27,8 @@ a {
   color: inherit;
 }
 button,
-input {
+input,
+textarea {
   font: inherit;
 }
 .sr-only {
@@ -203,7 +204,8 @@ h3 {
   outline: none;
 }
 #buscador-libros:focus,
-#form-recomendacion input:focus {
+#form-recomendacion input:focus,
+#form-recomendacion textarea:focus {
   border-color: var(--mauve);
   box-shadow: 0 0 0 4px rgba(180, 138, 156, 0.16);
 }
@@ -409,13 +411,74 @@ footer p {
   margin-top: 0.4rem;
   font-weight: 600;
 }
-#form-recomendacion input {
+#form-recomendacion input:not([type="checkbox"]),
+#form-recomendacion textarea {
+  width: 100%;
   padding: 0.85rem 1rem;
   color: var(--plum);
   background: var(--cream);
   border: 1px solid transparent;
   border-radius: 0.75rem;
   outline: none;
+}
+
+#form-recomendacion textarea {
+  resize: vertical;
+}
+
+.consentimiento {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+  margin-top: 0.8rem;
+  font-size: 0.9rem;
+  font-weight: 400;
+}
+
+.consentimiento input {
+  flex: 0 0 auto;
+  width: 1.1rem;
+  height: 1.1rem;
+  margin-top: 0.25rem;
+  accent-color: var(--plum);
+}
+
+.campo-trampa {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.estado-formulario {
+  min-height: 1.6rem;
+  margin: 0.25rem 0 0;
+  font-weight: 600;
+}
+
+.estado-formulario.exito {
+  color: #315b42;
+}
+
+.estado-formulario.error {
+  color: #873f55;
+}
+
+.estado-formulario.informacion,
+.aviso-privacidad {
+  color: var(--plum-light);
+}
+
+.aviso-privacidad {
+  padding-top: 1rem;
+  border-top: 1px solid rgba(75, 46, 63, 0.12);
+  font-size: 0.85rem;
+}
+
+#form-recomendacion button:disabled {
+  cursor: wait;
+  opacity: 0.65;
 }
 #form-recomendacion button {
   justify-self: start;
