@@ -1,116 +1,68 @@
-// Elementos de la página
+// ELEMENTOS DEL FORMULARIO
 const formulario = document.querySelector("#form-recomendacion");
-const listaRecomendaciones = document.querySelector("#lista-recomendaciones");
-const mensajeListaVacia = document.querySelector("#lista-vacia");
-const contadorRecomendaciones = document.querySelector(
-  "#total-recomendaciones",
-);
+const botonEnviar = formulario.querySelector('button[type="submit"]');
+const estadoFormulario = document.querySelector("#estado-formulario");
 
-const CLAVE_ALMACENAMIENTO = "camelia-recomendaciones";
+const textoBotonInicial = botonEnviar.textContent;
+const formularioAbiertoEn = Date.now();
 
-// Recupera las recomendaciones guardadas en el navegador.
-function cargarRecomendaciones() {
-  try {
-    return JSON.parse(localStorage.getItem(CLAVE_ALMACENAMIENTO)) || [];
-  } catch {
-    return [];
+function mostrarEstado(mensaje, tipo) {
+  estadoFormulario.textContent = mensaje;
+  estadoFormulario.className = `estado-formulario ${tipo}`;
+}
+
+function obtenerDatosFormulario() {
+  return {
+    nombre: document.querySelector("#nombre-recom").value.trim(),
+    email: document.querySelector("#email-recom").value.trim(),
+    titulo: document.querySelector("#titulo-recom").value.trim(),
+    autor: document.querySelector("#autor-recom").value.trim(),
+    comentario: document.querySelector("#comentario-recom").value.trim(),
+    consentimiento: document.querySelector("#consentimiento-recom").checked,
+    web: document.querySelector("#web-recom").value,
+    tiempoFormulario: Date.now() - formularioAbiertoEn,
+  };
+}
+
+async function enviarRecomendacion(datos) {
+  const respuesta = await fetch("/api/recomendaciones", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(datos),
+  });
+
+  const resultado = await respuesta.json();
+
+  if (!respuesta.ok) {
+    throw new Error(resultado.error || "No se pudo enviar la recomendación.");
   }
 }
 
-let recomendaciones = cargarRecomendaciones();
+formulario.addEventListener("submit", async (evento) => {
+  evento.preventDefault();
 
-// Evita que un texto introducido por el usuario se interprete como HTML.
-function escaparHTML(texto) {
-  const elementoTemporal = document.createElement("div");
-  elementoTemporal.textContent = texto;
-  return elementoTemporal.innerHTML;
-}
-
-function guardarRecomendaciones() {
-  const datosEnTexto = JSON.stringify(recomendaciones);
-  localStorage.setItem(CLAVE_ALMACENAMIENTO, datosEnTexto);
-}
-
-function crearRecomendacionHTML(recomendacion) {
-  const tituloSeguro = escaparHTML(recomendacion.titulo);
-  const autorSeguro = escaparHTML(recomendacion.autor);
-
-  return `
-    <li class="recomendacion-item">
-      <span>
-        <strong>${tituloSeguro}</strong>
-        <small>${autorSeguro}</small>
-      </span>
-
-      <button
-        type="button"
-        data-id="${recomendacion.id}"
-        aria-label="Eliminar ${tituloSeguro}"
-      >
-        Eliminar
-      </button>
-    </li>
-  `;
-}
-
-function mostrarRecomendaciones() {
-  listaRecomendaciones.innerHTML = recomendaciones
-    .map(crearRecomendacionHTML)
-    .join("");
-
-  mensajeListaVacia.hidden = recomendaciones.length > 0;
-
-  const palabraLibro = recomendaciones.length === 1 ? "libro" : "libros";
-  contadorRecomendaciones.textContent = `${recomendaciones.length} ${palabraLibro}`;
-}
-
-function añadirRecomendacion() {
-  const campoTitulo = document.querySelector("#titulo-recom");
-  const campoAutor = document.querySelector("#autor-recom");
-
-  const titulo = campoTitulo.value.trim();
-  const autor = campoAutor.value.trim();
-
-  if (!titulo || !autor) {
+  if (!formulario.reportValidity()) {
     return;
   }
 
-  const nuevaRecomendacion = {
-    id: crypto.randomUUID(),
-    titulo: titulo,
-    autor: autor,
-  };
+  botonEnviar.disabled = true;
+  botonEnviar.textContent = "Enviando…";
+  mostrarEstado("Enviando tu recomendación…", "informacion");
 
-  recomendaciones.unshift(nuevaRecomendacion);
-  guardarRecomendaciones();
-  mostrarRecomendaciones();
+  try {
+    await enviarRecomendacion(obtenerDatosFormulario());
 
-  formulario.reset();
-  campoTitulo.focus();
-}
-
-function eliminarRecomendacion(id) {
-  recomendaciones = recomendaciones.filter(
-    (recomendacion) => recomendacion.id !== id,
-  );
-
-  guardarRecomendaciones();
-  mostrarRecomendaciones();
-}
-
-// Eventos
-formulario.addEventListener("submit", (evento) => {
-  evento.preventDefault();
-  añadirRecomendacion();
-});
-
-listaRecomendaciones.addEventListener("click", (evento) => {
-  const botonEliminar = evento.target.closest("[data-id]");
-
-  if (botonEliminar) {
-    eliminarRecomendacion(botonEliminar.dataset.id);
+    formulario.reset();
+    mostrarEstado(
+      "¡Gracias! Tu recomendación se ha enviado correctamente.",
+      "exito",
+    );
+  } catch (error) {
+    mostrarEstado(error.message, "error");
+  } finally {
+    botonEnviar.disabled = false;
+    botonEnviar.textContent = textoBotonInicial;
   }
 });
-
-// Muestra la lista cuando se abre la página.
-mostrarRecomendaciones();
