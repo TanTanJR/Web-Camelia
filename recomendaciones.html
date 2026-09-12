@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <meta
       name="description"
-      content="Guarda libros que te gustaría ver reseñados en Camelia Books."
+      content="Recomienda tu próxima lectura a Camelia Books."
     />
     <title>Recomendaciones | Camelia Books</title>
     <link rel="stylesheet" href="styles.css" />
@@ -24,49 +24,105 @@
         <span>Camelia Books</span>
       </a>
     </header>
+
     <nav class="navbar" aria-label="Navegación principal">
       <a href="index.html">Inicio</a>
       <a class="activo" href="recomendaciones.html">Recomendaciones</a>
       <a href="index.html#catalogo">Libros</a>
       <a href="index.html#footer">Contacto</a>
     </nav>
+
     <main class="pagina-recomendaciones">
       <section class="recomendaciones-panel">
-        <p class="intro-etiqueta">Tu lista</p>
+        <p class="intro-etiqueta">Tu recomendación</p>
         <h1>¿Qué libro debería leer después?</h1>
         <p>
-          Añade un título y su autor. La lista se guardará en este dispositivo
-          para que puedas volver a ella cuando quieras.
+          Cuéntame qué libro recomiendas. Tus datos se enviarán de forma privada
+          y el correo solo se utilizará para contactar contigo sobre tu propuesta.
         </p>
+
         <form id="form-recomendacion">
+          <label for="nombre-recom">Tu nombre</label>
+          <input
+            type="text"
+            id="nombre-recom"
+            name="nombre"
+            autocomplete="name"
+            required
+            maxlength="80"
+          />
+
+          <label for="email-recom">Correo electrónico</label>
+          <input
+            type="email"
+            id="email-recom"
+            name="email"
+            autocomplete="email"
+            placeholder="nombre@ejemplo.com"
+            required
+            maxlength="254"
+          />
+
           <label for="titulo-recom">Título del libro</label>
           <input
             type="text"
             id="titulo-recom"
+            name="titulo"
             placeholder="Por ejemplo: El principito"
             required
             maxlength="100"
           />
+
           <label for="autor-recom">Autor o autora</label>
           <input
             type="text"
             id="autor-recom"
+            name="autor"
             placeholder="Por ejemplo: Antoine de Saint-Exupéry"
             required
             maxlength="100"
           />
+
+          <label for="comentario-recom">¿Por qué lo recomiendas?</label>
+          <textarea
+            id="comentario-recom"
+            name="comentario"
+            rows="5"
+            required
+            maxlength="1000"
+          ></textarea>
+
+          <div class="campo-trampa" aria-hidden="true">
+            <label for="web-recom">Página web</label>
+            <input
+              type="text"
+              id="web-recom"
+              name="web"
+              tabindex="-1"
+              autocomplete="off"
+            />
+          </div>
+
+          <label class="consentimiento">
+            <input type="checkbox" id="consentimiento-recom" required />
+            <span>
+              Acepto que Camelia Books utilice mi correo para contactar conmigo
+              acerca de esta recomendación.
+            </span>
+          </label>
+
           <button class="boton-principal" type="submit">
-            Añadir recomendación
+            Enviar recomendación
           </button>
+
+          <p id="estado-formulario" class="estado-formulario" aria-live="polite"></p>
         </form>
-        <div class="lista-cabecera">
-          <h2>Libros apuntados</h2>
-          <span id="total-recomendaciones" aria-live="polite"></span>
-        </div>
-        <p id="lista-vacia" class="lista-vacia">
-          Todavía no has añadido ninguna recomendación.
+
+        <p class="aviso-privacidad">
+          El correo electrónico no se mostrará públicamente ni se compartirá
+          con otras personas.
         </p>
-        <ul id="lista-recomendaciones" class="lista-recomendaciones"></ul>
+
         <a class="volver" href="index.html">← Volver a la biblioteca</a>
       </section>
     </main>
