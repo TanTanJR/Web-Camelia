@@ -265,19 +265,21 @@ h3 {
 .libro-imagen {
   position: relative;
   min-height: 100%;
+  padding: 0.85rem;
   background: #eadde2;
 }
 .libro-imagen img {
   width: 100%;
   height: 100%;
-  min-height: 300px;
+  min-height: 274px;
   display: block;
   object-fit: cover;
+  border-radius: 0.8rem;
 }
 .categoria {
   position: absolute;
-  left: 0.7rem;
-  bottom: 0.7rem;
+  left: 1.25rem;
+  bottom: 1.25rem;
   padding: 0.35rem 0.7rem;
   color: #fff;
   background: rgba(75, 46, 63, 0.9);
@@ -499,14 +501,20 @@ footer p {
 
 .modal-contenido {
   display: grid;
-  grid-template-columns: minmax(230px, 35%) 1fr;
+  grid-template-columns: minmax(260px, 320px) 1fr;
 }
 
 .modal-contenido > img {
-  width: 100%;
-  height: 100%;
-  min-height: 500px;
-  object-fit: cover;
+  align-self: center;
+  justify-self: center;
+  width: auto;
+  max-width: calc(100% - 3rem);
+  height: auto;
+  max-height: 520px;
+  margin: 1.5rem;
+  object-fit: contain;
+  border-radius: 0.9rem;
+  box-shadow: 0 12px 30px rgba(75, 46, 63, 0.18);
 }
 
 .modal-informacion {
@@ -651,7 +659,7 @@ footer p {
     min-height: 260px;
   }
   .libro-imagen img {
-    min-height: 260px;
+    min-height: 234px;
   }
   .libro-info {
     padding: 1rem;
@@ -673,8 +681,11 @@ footer p {
     grid-template-columns: 1fr;
   }
   .modal-contenido > img {
-    height: 280px;
-    min-height: 0;
+    width: auto;
+    max-width: calc(100% - 3rem);
+    height: auto;
+    max-height: 360px;
+    margin: 1.5rem;
   }
   footer {
     align-items: flex-start;
