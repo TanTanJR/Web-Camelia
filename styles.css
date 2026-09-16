@@ -721,6 +721,181 @@ footer p {
   border-radius: 999px;
   font-size: 0.82rem;
 }
+
+/* Panel de administración */
+.pagina-admin {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top left, rgba(216, 167, 177, 0.35), transparent 35%),
+    var(--cream);
+}
+
+.admin-cabecera {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem max(1rem, calc((100% - 1180px) / 2));
+  color: white;
+  background: var(--plum);
+}
+
+.marca-admin {
+  color: inherit;
+  font: 400 1.65rem/1 "DM Serif Display", serif;
+  text-decoration: none;
+}
+
+.admin-acceso {
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+  padding: 1rem;
+}
+
+.admin-contenedor {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(340px, 0.8fr);
+  gap: 1.5rem;
+  width: min(1180px, calc(100% - 2rem));
+  padding: 2rem 0 4rem;
+}
+
+.admin-panel {
+  padding: clamp(1.4rem, 4vw, 2.5rem);
+  background: var(--white);
+  border: 1px solid rgba(75, 46, 63, 0.08);
+  border-radius: 1.5rem;
+  box-shadow: var(--shadow);
+}
+
+.admin-panel-acceso {
+  width: min(470px, 100%);
+}
+
+.admin-panel h1,
+.admin-panel h2 {
+  margin-top: 0;
+}
+
+.form-admin {
+  display: grid;
+  gap: 0.65rem;
+}
+
+.form-admin label {
+  margin-top: 0.55rem;
+  font-weight: 600;
+}
+
+.form-admin input:not([type="checkbox"]),
+.form-admin select,
+.form-admin textarea {
+  width: 100%;
+  padding: 0.8rem 0.95rem;
+  color: var(--plum);
+  background: var(--cream);
+  border: 1px solid rgba(75, 46, 63, 0.16);
+  border-radius: 0.75rem;
+  outline: none;
+}
+
+.form-admin input:focus,
+.form-admin select:focus,
+.form-admin textarea:focus {
+  border-color: var(--mauve);
+  box-shadow: 0 0 0 4px rgba(180, 138, 156, 0.16);
+}
+
+.form-admin textarea {
+  resize: vertical;
+}
+
+.form-admin small {
+  color: var(--plum-light);
+}
+
+.form-admin-columnas {
+  display: grid;
+  grid-template-columns: 1fr 140px;
+  gap: 1rem;
+}
+
+.form-admin-columnas > div {
+  display: grid;
+  gap: 0.65rem;
+}
+
+.admin-acciones-formulario,
+.libro-admin-acciones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 0.8rem;
+}
+
+.boton-secundario,
+.libro-admin-acciones button {
+  padding: 0.6rem 0.85rem;
+  color: var(--plum);
+  background: transparent;
+  border: 1px solid var(--mauve);
+  border-radius: 999px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.admin-cabecera .boton-secundario {
+  color: white;
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.admin-lista-cabecera {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.lista-admin {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.libro-admin {
+  display: grid;
+  grid-template-columns: 64px minmax(0, 1fr);
+  gap: 0.9rem;
+  align-items: center;
+  padding: 0.8rem;
+  background: var(--cream);
+  border-radius: 1rem;
+}
+
+.libro-admin img {
+  width: 64px;
+  height: 82px;
+  object-fit: cover;
+  border-radius: 0.55rem;
+}
+
+.libro-admin h3,
+.libro-admin p {
+  margin: 0;
+}
+
+.libro-admin-acciones {
+  grid-column: 1 / -1;
+  justify-content: flex-end;
+  margin-top: 0;
+}
+
+.libro-admin-acciones .peligro {
+  color: #873f55;
+  border-color: #d8a7b1;
+}
+
 @media (max-width: 900px) {
   .controles {
     grid-template-columns: 1fr;
@@ -729,6 +904,9 @@ footer p {
     justify-content: flex-start;
   }
   .tarjetas {
+    grid-template-columns: 1fr;
+  }
+  .admin-contenedor {
     grid-template-columns: 1fr;
   }
 }
@@ -790,6 +968,9 @@ footer p {
   footer {
     align-items: flex-start;
     flex-direction: column;
+  }
+  .form-admin-columnas {
+    grid-template-columns: 1fr;
   }
 }
 @media (prefers-reduced-motion: reduce) {

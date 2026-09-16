@@ -20,6 +20,9 @@ La web está publicada en Vercel:
 - Indicador de contenido con o sin spoilers.
 - Diseño adaptable a ordenadores, tabletas y móviles.
 - Formulario para recomendar libros.
+- Panel privado para añadir, editar y eliminar libros.
+- Acceso de administradora mediante Supabase Auth.
+- Subida de portadas mediante Supabase Storage.
 - Almacenamiento privado de recomendaciones en Supabase.
 - Validación de los datos en el navegador y en el servidor.
 - Protección básica contra envíos automáticos.
@@ -40,7 +43,12 @@ La web está publicada en Vercel:
 ```text
 Web-Camelia/
 ├── api/
-│   └── recomendaciones.js       # API privada del formulario
+│   ├── configuracion-supabase.js # Configuración pública para el panel
+│   ├── libros.js                 # Lectura del catálogo desde Supabase
+│   └── recomendaciones.js        # API privada del formulario
+├── admin/
+│   ├── index.html                # Gestión del catálogo
+│   └── login.html                # Acceso de administradora
 ├── datos/
 │   └── libros.js                # Información del catálogo
 ├── img/                         # Imágenes de las portadas
@@ -50,6 +58,7 @@ Web-Camelia/
 ├── supabase/
 │   └── recomendaciones.sql      # Creación de la tabla
 ├── CONFIGURACION_SUPABASE.md    # Guía para conectar Supabase
+├── CONFIGURACION_ADMIN.md       # Guía del panel privado
 ├── index.html                   # Página principal
 ├── recomendaciones.html         # Formulario de recomendaciones
 └── styles.css                   # Estilos de toda la web
