@@ -1,7 +1,7 @@
 // CATÁLOGO DE CAMELIA BOOKS
 // Para añadir un libro, copia un objeto completo y cambia sus valores.
 
-const libros = [
+const librosBase = [
   {
     titulo: "Alas de Sangre",
     autor: "Rebecca Yarros",

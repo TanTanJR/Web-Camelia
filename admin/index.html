@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="robots" content="noindex,nofollow" />
+    <title>Gestionar libros | Camelia Books</title>
+    <link rel="stylesheet" href="../styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../js/admin.js" defer></script>
+  </head>
+  <body class="pagina-admin">
+    <header class="admin-cabecera">
+      <a class="marca-admin" href="../index.html">🌸 Camelia Books</a>
+      <button id="cerrar-sesion" class="boton-secundario" type="button">
+        Cerrar sesión
+      </button>
+    </header>
+
+    <main class="admin-contenedor">
+      <section class="admin-panel">
+        <p class="intro-etiqueta">Panel privado</p>
+        <h1 id="titulo-formulario">Añadir un libro</h1>
+
+        <form id="form-libro" class="form-admin form-libro">
+          <input id="libro-id" type="hidden" />
+
+          <label for="titulo-libro">Título</label>
+          <input id="titulo-libro" type="text" maxlength="120" required />
+
+          <label for="autor-libro">Autor o autora</label>
+          <input id="autor-libro" type="text" maxlength="120" required />
+
+          <div class="form-admin-columnas">
+            <div>
+              <label for="categoria-libro">Categoría</label>
+              <select id="categoria-libro" required>
+                <option value="fantasia">Fantasía</option>
+                <option value="juveniles">Juvenil</option>
+                <option value="distopia">Distopía</option>
+                <option value="romance">Romance</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="valoracion-libro">Valoración</label>
+              <input
+                id="valoracion-libro"
+                type="number"
+                min="0"
+                max="5"
+                step="0.5"
+                required
+              />
+            </div>
+          </div>
+
+          <label for="saga-libro">Saga</label>
+          <input id="saga-libro" type="text" maxlength="120" />
+
+          <label for="descripcion-libro">Descripción</label>
+          <textarea id="descripcion-libro" rows="4" maxlength="1500" required></textarea>
+
+          <label for="opinion-libro">Opinión</label>
+          <textarea id="opinion-libro" rows="4" maxlength="1500" required></textarea>
+
+          <label for="destacados-libro">Puntos destacados</label>
+          <input
+            id="destacados-libro"
+            type="text"
+            placeholder="Dragones, romance, ritmo rápido"
+            required
+          />
+          <small>Escribe los puntos separados por comas.</small>
+
+          <label for="portada-libro">Portada</label>
+          <input id="portada-libro" type="file" accept="image/*" />
+          <input id="imagen-actual" type="hidden" />
+
+          <label class="consentimiento">
+            <input id="spoilers-libro" type="checkbox" />
+            <span>La opinión contiene spoilers</span>
+          </label>
+
+          <div class="admin-acciones-formulario">
+            <button class="boton-principal" type="submit">Guardar libro</button>
+            <button id="cancelar-edicion" class="boton-secundario" type="button" hidden>
+              Cancelar edición
+            </button>
+          </div>
+
+          <p id="estado-admin" class="estado-formulario" aria-live="polite"></p>
+        </form>
+      </section>
+
+      <section class="admin-panel">
+        <div class="admin-lista-cabecera">
+          <div>
+            <p class="intro-etiqueta">Catálogo</p>
+            <h2>Libros publicados</h2>
+          </div>
+          <span id="total-admin"></span>
+        </div>
+
+        <div id="lista-admin" class="lista-admin"></div>
+      </section>
+    </main>
+  </body>
+</html>

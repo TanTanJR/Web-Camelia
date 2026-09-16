@@ -11,6 +11,7 @@ const modalLibro = document.querySelector("#modal-libro");
 const botonCerrarModal = document.querySelector("#cerrar-modal");
 
 let categoriaActiva = "todas";
+let libros = [...librosBase];
 
 // ============================================================
 // 2. FUNCIONES
@@ -156,6 +157,26 @@ function cerrarFichaLibro() {
   modalLibro.close();
 }
 
+async function cargarLibros() {
+  try {
+    const respuesta = await fetch("/api/libros");
+
+    if (!respuesta.ok) {
+      throw new Error("No se pudo cargar el catálogo desde la base de datos.");
+    }
+
+    const librosGuardados = await respuesta.json();
+
+    if (librosGuardados.length > 0) {
+      libros = librosGuardados;
+    }
+  } catch (error) {
+    console.warn(`${error.message} Se utilizará el catálogo local.`);
+  }
+
+  mostrarLibros();
+}
+
 // ============================================================
 // 3. EVENTOS
 // ============================================================
@@ -193,4 +214,4 @@ modalLibro.addEventListener("click", (evento) => {
 // ============================================================
 
 document.querySelector("#anio").textContent = new Date().getFullYear();
-mostrarLibros();
+cargarLibros();
