@@ -3,6 +3,13 @@ const listaAdmin = document.querySelector("#lista-admin");
 const estadoAdmin = document.querySelector("#estado-admin");
 const botonGuardar = formularioLibro.querySelector('button[type="submit"]');
 const botonCancelar = document.querySelector("#cancelar-edicion");
+const selectorCategoria = document.querySelector("#categoria-libro");
+const campoCategoriaPersonalizada = document.querySelector(
+  "#campo-categoria-personalizada",
+);
+const categoriaPersonalizada = document.querySelector(
+  "#categoria-personalizada",
+);
 
 let clienteSupabase;
 let librosAdmin = [];
@@ -19,6 +26,36 @@ function escaparHTML(texto = "") {
     .replaceAll(">", "&gt;")
     .replaceAll('"', "&quot;")
     .replaceAll("'", "&#039;");
+}
+
+function rutaImagenAdmin(ruta) {
+  const esRutaCompleta =
+    ruta.startsWith("http://") ||
+    ruta.startsWith("https://") ||
+    ruta.startsWith("/") ||
+    ruta.startsWith("data:") ||
+    ruta.startsWith("blob:");
+
+  return esRutaCompleta ? ruta : `../${ruta.replace(/^\.\//, "")}`;
+}
+
+function mostrarCategoriaPersonalizada(mostrar) {
+  campoCategoriaPersonalizada.hidden = !mostrar;
+  categoriaPersonalizada.required = mostrar;
+
+  if (!mostrar) {
+    categoriaPersonalizada.value = "";
+  }
+}
+
+function crearIdentificadorCategoria(nombre) {
+  return nombre
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .trim()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
 }
 
 async function iniciarPanel() {
@@ -78,7 +115,7 @@ function mostrarListaAdmin() {
     .map(
       (libro) => `
         <article class="libro-admin">
-          <img src="${escaparHTML(libro.imagen)}" alt="" />
+          <img src="${escaparHTML(rutaImagenAdmin(libro.imagen))}" alt="" />
           <div>
             <h3>${escaparHTML(libro.titulo)}</h3>
             <p>${escaparHTML(libro.autor)}</p>
@@ -107,13 +144,23 @@ function etiquetaCategoria(categoria) {
 }
 
 function obtenerDatosFormulario() {
-  const categoria = document.querySelector("#categoria-libro").value;
+  const esCategoriaNueva = selectorCategoria.value === "otra";
+  const etiqueta = esCategoriaNueva
+    ? categoriaPersonalizada.value.trim()
+    : etiquetaCategoria(selectorCategoria.value);
+  const categoria = esCategoriaNueva
+    ? crearIdentificadorCategoria(etiqueta)
+    : selectorCategoria.value;
+
+  if (!categoria || !etiqueta) {
+    throw new Error("Escribe el nombre de la nueva categoría.");
+  }
 
   return {
     titulo: document.querySelector("#titulo-libro").value.trim(),
     autor: document.querySelector("#autor-libro").value.trim(),
     categoria,
-    etiqueta: etiquetaCategoria(categoria),
+    etiqueta,
     saga: document.querySelector("#saga-libro").value.trim() || "Independiente",
     descripcion: document.querySelector("#descripcion-libro").value.trim(),
     opinion: document.querySelector("#opinion-libro").value.trim(),
@@ -185,7 +232,17 @@ function editarLibro(id) {
   document.querySelector("#libro-id").value = libro.id;
   document.querySelector("#titulo-libro").value = libro.titulo;
   document.querySelector("#autor-libro").value = libro.autor;
-  document.querySelector("#categoria-libro").value = libro.categoria;
+  const categoriaConocida = [...selectorCategoria.options].some(
+    (opcion) => opcion.value === libro.categoria && opcion.value !== "otra",
+  );
+
+  selectorCategoria.value = categoriaConocida ? libro.categoria : "otra";
+  mostrarCategoriaPersonalizada(!categoriaConocida);
+
+  if (!categoriaConocida) {
+    categoriaPersonalizada.value = libro.etiqueta || libro.categoria;
+  }
+
   document.querySelector("#valoracion-libro").value = libro.valoracion;
   document.querySelector("#saga-libro").value = libro.saga;
   document.querySelector("#descripcion-libro").value = libro.descripcion;
@@ -204,6 +261,8 @@ function limpiarFormulario() {
   document.querySelector("#libro-id").value = "";
   document.querySelector("#imagen-actual").value = "";
   document.querySelector("#titulo-formulario").textContent = "Añadir un libro";
+  selectorCategoria.value = "fantasia";
+  mostrarCategoriaPersonalizada(false);
   botonCancelar.hidden = true;
 }
 
@@ -258,6 +317,10 @@ listaAdmin.addEventListener("click", async (evento) => {
       mostrarEstado(error.message, "error");
     }
   }
+});
+
+selectorCategoria.addEventListener("change", () => {
+  mostrarCategoriaPersonalizada(selectorCategoria.value === "otra");
 });
 
 botonCancelar.addEventListener("click", limpiarFormulario);
