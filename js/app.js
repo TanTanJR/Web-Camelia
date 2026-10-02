@@ -7,11 +7,15 @@ const botonLimpiar = document.querySelector("#limpiar-buscador");
 const contadorResultados = document.querySelector("#contador-resultados");
 const mensajeSinResultados = document.querySelector("#sin-resultados");
 const botonesCategoria = document.querySelectorAll("[data-categoria]");
+const paginacion = document.querySelector("#paginacion");
 const modalLibro = document.querySelector("#modal-libro");
 const botonCerrarModal = document.querySelector("#cerrar-modal");
 
+const LIBROS_POR_PAGINA = 8;
+
 let categoriaActiva = "todas";
 let libros = [...librosBase];
+let paginaActual = 1;
 
 // ============================================================
 // 2. FUNCIONES
@@ -94,6 +98,87 @@ function libroCoincideConFiltros(libro, textoBuscado) {
   return coincideCategoria && coincideTexto;
 }
 
+function crearBotonPagina(numeroPagina) {
+  const esPaginaActual = numeroPagina === paginaActual;
+
+  return `
+    <button
+      type="button"
+      data-pagina="${numeroPagina}"
+      ${esPaginaActual ? 'class="activa" aria-current="page"' : ""}
+      aria-label="Ir a la página ${numeroPagina}"
+    >
+      ${numeroPagina}
+    </button>
+  `;
+}
+
+function obtenerPaginasMostradas(totalPaginas) {
+  if (totalPaginas <= 7) {
+    return Array.from({ length: totalPaginas }, (_, indice) => indice + 1);
+  }
+
+  const paginas = new Set([
+    1,
+    totalPaginas,
+    paginaActual - 1,
+    paginaActual,
+    paginaActual + 1,
+  ]);
+
+  const paginasValidas = [...paginas]
+    .filter((pagina) => pagina >= 1 && pagina <= totalPaginas)
+    .sort((paginaA, paginaB) => paginaA - paginaB);
+
+  return paginasValidas.flatMap((pagina, indice) => {
+    const paginaAnterior = paginasValidas[indice - 1];
+    const haySalto = paginaAnterior && pagina - paginaAnterior > 1;
+
+    return haySalto ? ["…", pagina] : [pagina];
+  });
+}
+
+function mostrarPaginacion(totalPaginas) {
+  paginacion.hidden = totalPaginas <= 1;
+
+  if (totalPaginas <= 1) {
+    paginacion.innerHTML = "";
+    return;
+  }
+
+  const botonesNumerados = obtenerPaginasMostradas(totalPaginas)
+    .map((pagina) =>
+      pagina === "…"
+        ? '<span class="paginacion-separador" aria-hidden="true">…</span>'
+        : crearBotonPagina(pagina),
+    )
+    .join("");
+
+  paginacion.innerHTML = `
+    <button
+      type="button"
+      class="paginacion-anterior"
+      data-pagina="${paginaActual - 1}"
+      ${paginaActual === 1 ? "disabled" : ""}
+    >
+      Anterior
+    </button>
+
+    <div class="paginacion-numeros">
+      ${botonesNumerados}
+    </div>
+
+    <button
+      type="button"
+      class="paginacion-siguiente"
+      data-pagina="${paginaActual + 1}"
+      ${paginaActual === totalPaginas ? "disabled" : ""}
+    >
+      Siguiente
+    </button>
+  `;
+}
+
 function mostrarLibros() {
   const textoBuscado = normalizarTexto(buscador.value.trim());
 
@@ -101,7 +186,19 @@ function mostrarLibros() {
     libroCoincideConFiltros(libro, textoBuscado),
   );
 
-  listaLibros.innerHTML = librosVisibles
+  const totalPaginas = Math.ceil(librosVisibles.length / LIBROS_POR_PAGINA);
+
+  if (paginaActual > totalPaginas) {
+    paginaActual = Math.max(totalPaginas, 1);
+  }
+
+  const primerLibro = (paginaActual - 1) * LIBROS_POR_PAGINA;
+  const librosDeLaPagina = librosVisibles.slice(
+    primerLibro,
+    primerLibro + LIBROS_POR_PAGINA,
+  );
+
+  listaLibros.innerHTML = librosDeLaPagina
     .map((libro) => crearTarjeta(libro, libros.indexOf(libro)))
     .join("");
 
@@ -110,10 +207,12 @@ function mostrarLibros() {
 
   mensajeSinResultados.hidden = librosVisibles.length !== 0;
   botonLimpiar.classList.toggle("visible", buscador.value.length > 0);
+  mostrarPaginacion(totalPaginas);
 }
 
 function cambiarCategoria(botonPulsado) {
   categoriaActiva = botonPulsado.dataset.categoria;
+  paginaActual = 1;
 
   botonesCategoria.forEach((boton) => {
     boton.classList.toggle("activo", boton === botonPulsado);
@@ -185,12 +284,31 @@ botonesCategoria.forEach((boton) => {
   boton.addEventListener("click", () => cambiarCategoria(boton));
 });
 
-buscador.addEventListener("input", mostrarLibros);
+buscador.addEventListener("input", () => {
+  paginaActual = 1;
+  mostrarLibros();
+});
 
 botonLimpiar.addEventListener("click", () => {
   buscador.value = "";
+  paginaActual = 1;
   buscador.focus();
   mostrarLibros();
+});
+
+paginacion.addEventListener("click", (evento) => {
+  const botonPagina = evento.target.closest("[data-pagina]");
+
+  if (!botonPagina || botonPagina.disabled) {
+    return;
+  }
+
+  paginaActual = Number(botonPagina.dataset.pagina);
+  mostrarLibros();
+  document.querySelector("#titulo-catalogo").scrollIntoView({
+    behavior: "smooth",
+    block: "start",
+  });
 });
 
 listaLibros.addEventListener("click", (evento) => {
