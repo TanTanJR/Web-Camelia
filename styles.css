@@ -374,6 +374,57 @@ h3 {
   border: 1px dashed var(--mauve);
   border-radius: 1rem;
 }
+.paginacion {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7rem;
+  margin-top: 2.25rem;
+}
+.paginacion[hidden] {
+  display: none;
+}
+.paginacion-numeros {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.paginacion-separador {
+  padding-inline: 0.15rem;
+  color: var(--plum-light);
+}
+.paginacion button {
+  min-width: 2.7rem;
+  min-height: 2.7rem;
+  padding: 0.55rem 0.8rem;
+  color: var(--plum);
+  background: var(--white);
+  border: 1px solid var(--mauve);
+  border-radius: 999px;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    color 0.2s,
+    background 0.2s,
+    border-color 0.2s,
+    transform 0.2s;
+}
+.paginacion button:hover:not(:disabled),
+.paginacion button.activa {
+  color: #fff;
+  background: var(--plum);
+  border-color: var(--plum);
+  transform: translateY(-2px);
+}
+.paginacion button:focus-visible {
+  outline: 3px solid rgba(180, 138, 156, 0.45);
+  outline-offset: 3px;
+}
+.paginacion button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
 footer {
   display: flex;
   justify-content: space-between;
@@ -954,6 +1005,14 @@ footer p {
   }
   .ver-ficha {
     padding-left: 0;
+  }
+  .paginacion {
+    flex-wrap: wrap;
+  }
+  .paginacion-numeros {
+    order: -1;
+    justify-content: center;
+    width: 100%;
   }
   .modal-contenido {
     grid-template-columns: 1fr;
